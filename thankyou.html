@@ -1,8 +1,26 @@
-<p>当てはまっている度は <strong id="score"></strong> ですね。ありがとうございました。</p>
+<!DOCTYPE html>
+<html>
 
-<script>
-  // URLパラメータからscoreの値を取得して表示する
-  const urlParams = new URLSearchParams(window.location.search);
-  const score = urlParams.get('score');
-  document.getElementById('score').textContent = score;
-</script>
+<head>
+  <meta charset="UTF-8">
+  <title>評価ありがとうございます</title>
+</head>
+
+<body>
+  <h1>評価ありがとうございます</h1>
+  <div id="rating-container">
+    <p>当てはまっている度は <span id="rating-value"></span> でした。ありがとうございました。</p>
+  </div>
+
+  <script>
+    const ratingValueElement = document.getElementById("rating-value");
+    const urlParams = new URLSearchParams(window.location.search);
+    const rating = urlParams.get("rating");
+
+    if (rating) {
+      ratingValueElement.textContent = rating;
+    }
+  </script>
+</body>
+
+</html>
