@@ -16,7 +16,7 @@
     }
 
     #result-container {
-      max-height: 800px;
+      max-height: 1000px;
       overflow: auto;
       border: 1px solid #ccc;
       padding: 10px;
@@ -55,6 +55,17 @@
     <button>3</button>
     <button>4</button>
   </div>
+
+  <script>
+    const buttons = document.querySelectorAll("#rating-buttons button");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const rating = button.textContent;
+        window.location.href = `thankyou.html?rating=${rating}`;
+      });
+    });
+  </script>
 </body>
 
 </html>
