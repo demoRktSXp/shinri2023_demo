@@ -26,6 +26,10 @@
       // 「占い中...」の表示をする要素を取得
       const loadingElement = document.getElementById('loading');
 
+      // 「占い中...」の表示をリセットする
+    if (loadingElement.textContent === '占い中...') {
+      loadingElement.textContent = '';
+    }
       // 文字列を一文字ずつ表示するためのカウンターとタイマーの初期化
       let counter = 0;
       let timer;
