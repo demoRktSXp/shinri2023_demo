@@ -10,6 +10,11 @@
     }
   </style>
   <script>
+// ページ読み込み時の処理
+  window.addEventListener('load', function() {
+    // 「占い中...」の表示をリセットする
+    resetLoadingText();
+  });
     // 「自分を占う！」リンクがクリックされたときの処理
     function startFortuneTelling() {
       // 生年月日の値を取得
