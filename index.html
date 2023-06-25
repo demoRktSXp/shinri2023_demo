@@ -27,9 +27,8 @@
       const loadingElement = document.getElementById('loading');
 
       // 「占い中...」の表示をリセットする
-    if (loadingElement.textContent === '占い中...') {
-  loadingElement.textContent = '';
-}
+   　　　　　resetLoadingText();
+
       // 文字列を一文字ずつ表示するためのカウンターとタイマーの初期化
       let counter = 0;
       let timer;
@@ -61,14 +60,19 @@
         window.location.href = 'result.html';
       }, 3000);
     }
+    // 「占い中...」の表示をリセットする関数
+  function resetLoadingText() {
+    const loadingElement = document.getElementById('loading');
+    loadingElement.textContent = '';
+  }
      // ページが復元された場合の処理
   window.addEventListener('pageshow', function(event) {
     var historyTraversal = event.persisted ||
                            (typeof window.performance != 'undefined' &&
                             window.performance.navigation.type === 2);
-    if (historyTraversal) {
-      var loadingElement = document.getElementById('loading');
-      loadingElement.style.display = 'none';
+       if (historyTraversal) {
+      // ページが復元された場合に「占い中...」の表示をリセットする
+      resetLoadingText();
     }
   });
 </script>
