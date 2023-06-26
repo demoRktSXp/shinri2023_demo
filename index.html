@@ -182,15 +182,24 @@
 <div id="loading" style="display: none;"></div>
 <p id="additional-text">*このウェブサイトが個人情報を収集をすることはございません。</p>
 <style>
-  #additional-text {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 24px;
-    color: #333;
-  }
-</style>
+    /* 既存のスタイル */
+    body {
+      text-align: center;
+      font-size: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* 追加のスタイル */
+    #additional-text {
+      position: absolute;
+      left: 50%;
+      bottom: 4em;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
 <meta http-equiv="Cache-Control" content="no-store" />
 <meta http-equiv="Pragma" content="no-cache" />
 </body>
