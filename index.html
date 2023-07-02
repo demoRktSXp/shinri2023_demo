@@ -2,28 +2,38 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>心理学占い</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
+  
+  <!-- フォントのリンクタグを追加 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200&display=swap" rel="stylesheet">
+  
   <style>
+    /* フォント指定 */
+    body {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+    }
+    
     /* イラストのスタイル */
     .illustration {
-      width: 200px;
+      width: 500px;
+      height: auto;
     }
-    /* 既存のスタイル */
+    
+    /* その他のスタイル指定 */
     body {
       text-align: center;
       font-size: 40px;
       max-width: 1000px;
       margin: 0 auto;
     }
-    /* 追加のスタイル */
+    
     .center-image {
       display: flex;
       justify-content: center;
     }
+    
     select#year,
     select#month,
     select#day,
@@ -31,20 +41,24 @@
       height: 50px;
       font-size: 30px;
     }
+    
     button {
       font-size: 24px;
       padding: 10px 20px;
       margin-top: 20px;
     }
+    
+    /* 追加のスタイル */
     #additional-text {
       position: absolute;
       left: 50%;
-      top: 65em;
+      top: 73em;
       transform: translateX(-50%);
       font-size: 24px;
       color: #333;
     }
   </style>
+  
   <script>
     // ページ読み込み時の処理
     window.addEventListener('load', function() {
@@ -120,14 +134,18 @@
       }
     });
   </script>
-  <meta http-equiv="Cache-Control" content="no-store">
-  <meta http-equiv="Pragma" content="no-cache">
+  
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
 </head>
 <body>
   <h1>心理学占い</h1>
+  
   <div class="center-image">
+    <!-- イラストの追加 -->
     <img class="illustration" src="uranaiimage.png" alt="占いイラスト">
   </div>
+  
   <h3>あなたの生年月日・血液型を教えてください</h3>
   <label for="year">年:</label>
   <select id="year">
@@ -166,8 +184,7 @@
   <br>
   <br>
   <label for="blood-type">血液型:</label>
-  <select id="blood-type">
-    <option value="">選択してください</option>
+  <select id="blood-type" name="blood-type">
     <option value="A">A型</option>
     <option value="B">B型</option>
     <option value="O">O型</option>
@@ -175,8 +192,11 @@
   </select>
   <br>
   <br>
-  <button onclick="startFortuneTelling()">自分を占う！</button>
-  <div id="loading" style="display: none;">占い中...</div>
-  <div id="additional-text">追加のテキストです。</div>
+  <button onclick="startFortuneTelling()">クリックして占う</button>
+  <br> 
+  <!-- 「占い中...」の表示をする要素 -->
+  <div id="loading" style="display: none;"></div>
+  <p id="additional-text">*このウェブサイトが個人情報を収集をすることはございません。</p>
+  
 </body>
 </html>
