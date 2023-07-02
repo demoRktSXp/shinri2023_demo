@@ -3,70 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>心理学占い</title>
-  
-  <!-- フォントのリンクタグを追加 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
-  
+  <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
   <style>
-    /* フォント指定 */
-    body {
-      font-family: 'M PLUS Rounded 1c', sans-serif;
-    }
-    
     /* イラストのスタイル */
     .illustration {
-      width: 500px;
-      height: auto;
-    }
-    
-    /* その他のスタイル指定 */
-    body {
-      text-align: center;
-      font-size: 40px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .center-image {
-      display: flex;
-      justify-content: center;
-    }
-    
-    select#year,
-    select#month,
-    select#day,
-    select#blood-type {
-      height: 50px;
-      font-size: 30px;
-    }
-    
-    button {
-      font-size: 24px;
-      padding: 10px 20px;
-      margin-top: 20px;
-    }
-    
-    /* 追加のスタイル */
-    #additional-text {
-      position: absolute;
-      left: 50%;
-      top: 73em;
-      transform: translateX(-50%);
-      font-size: 24px;
-      color: #333;
+      width: 200px;
     }
   </style>
-  
+  <style>
+    /* 追加のスタイル */
+    p.Regular {
+      font-family: 'M+ Type-1 (general-j) Regular';
+    }
+  </style>
   <script>
     // ページ読み込み時の処理
     window.addEventListener('load', function() {
       // 「占い中...」の表示をリセットする
       resetLoadingText();
     });
-
+    
     // 「自分を占う！」リンクがクリックされたときの処理
     function startFortuneTelling() {
       // 生年月日の値を取得
@@ -135,17 +91,34 @@
       }
     });
   </script>
-  
-  <meta http-equiv="Cache-Control" content="no-store" />
-  <meta http-equiv="Pragma" content="no-cache" />
+  <style>
+    body {
+      text-align: center; /* body要素のテキストを中央揃えにする */
+    }
+
+    .center-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    select#year,
+    select#month,
+    select#day,
+    select#blood-type {
+      height: 50px; /* 選択箇所の高さを調整する */
+      font-size: 30px; /* 選択箇所のフォントサイズを調整する */
+    }
+
+    button {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1><span class="wf-sawarabimincho">心理学占い</span></h1>
-  
-  <div class="center-image">
-    <!-- イラストの追加 -->
-    <img class="illustration" src="uranaiimage.png" alt="占いイラスト">
-  </div>
+  <h1>心理学占い</h1>
+  <img class="illustration" src="uranaiimage.png" alt="占いイラスト">
   
   <h3>あなたの生年月日・血液型を教えてください</h3>
   <label for="year">年:</label>
@@ -158,8 +131,7 @@
       }
     </script>
   </select>
-  <br>
-  <br>
+  <br><br>
   <label for="month">月:</label>
   <select id="month">
     <option value="">選択してください</option>
@@ -170,8 +142,7 @@
       }
     </script>
   </select>
-  <br>
-  <br>
+  <br><br>
   <label for="day">日:</label>
   <select id="day">
     <option value="">選択してください</option>
@@ -182,24 +153,40 @@
       }
     </script>
   </select>
-  <br>
-  <br>
+  <br><br>
   <label for="blood-type">血液型:</label>
-  <select id="blood-type">
+  <select id="blood-type" name="blood-type">
     <option value="">選択してください</option>
     <option value="A">A型</option>
     <option value="B">B型</option>
     <option value="O">O型</option>
     <option value="AB">AB型</option>
   </select>
+  <br><br>
+  <button onclick="startFortuneTelling()">クリックして占う</button>
   <br>
-  <br>
-  <button onclick="startFortuneTelling()">自分を占う！</button>
-  
-  <!-- 「占い中...」の表示 -->
-  <p id="loading"></p>
+  <div id="loading" style="display: none;"></div>
+  <p id="additional-text">*このウェブサイトが個人情報を収集することはございません。</p>
+  <style>
+    /* 既存のスタイル */
+    body {
+      text-align: center;
+      font-size: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
-  <!-- 追加のテキスト -->
-  <p id="additional-text">*このウェブサイトは個人情報を収集しません。</p>
+    /* 追加のスタイル */
+    #additional-text {
+      position: absolute;
+      left: 50%;
+      top: 65em;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
 </body>
 </html>
