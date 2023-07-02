@@ -3,60 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <title>心理学占い</title>
+  
+  <!-- フォントのリンクタグを追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
   <style>
-    .wf-sawarabimincho { font-family: "Sawarabi Mincho"; }
+    /* フォント指定 */
+    body {
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+    }
+    
+    /* イラストのスタイル */
+    .illustration {
+      width: 500px;
+      height: auto;
+    }
+    
+    /* その他のスタイル指定 */
+    body {
+      text-align: center;
+      font-size: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .center-image {
+      display: flex;
+      justify-content: center;
+    }
+    
+    select#year,
+    select#month,
+    select#day,
+    select#blood-type {
+      height: 50px;
+      font-size: 30px;
+    }
+    
+    button {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+    
+    /* 追加のスタイル */
+    #additional-text {
+      position: absolute;
+      left: 50%;
+      top: 73em;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: #333;
+    }
   </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'M PLUS Rounded 1c', sans-serif; }
-  </style>
+  
+  <script>
+    // ページ読み込み時の処理
+    window.addEventListener('load', function() {
+      // 「占い中...」の表示をリセットする
+      resetLoadingText();
+    });
+
+    // 「自分を占う！」リンクがクリックされたときの処理
+    function startFortuneTelling() {
+      // 生年月日の値を取得
+      const year = document.getElementById('year').value;
+      const month = document.getElementById('month').value;
+      const day = document.getElementById('day').value;
+
+      // 生年月日の値をチェック
+      if (year === '' || month === '' || day === '') {
+        alert('生年月日を選択してください');
+        return;
+      }
+
+      // 「占い中...」の表示をする要素を取得
+      const loadingElement = document.getElementById('loading');
+
+      // 「占い中...」の表示をリセットする
+      resetLoadingText();
+
+      // 文字列を一文字ずつ表示するためのカウンターとタイマーの初期化
+      let counter = 0;
+      let timer;
+
+      // 一文字ずつ表示する関数
+      function displayNextCharacter() {
+        // 要素のテキストコンテンツに次の文字を追加
+        loadingElement.textContent += '占い中...'[counter];
+
+        // カウンターを増やす
+        counter++;
+
+        // 全ての文字を表示した場合はタイマーをクリアして処理終了
+        if (counter === '占い中...'.length) {
+          clearInterval(timer);
+          return;
+        }
+      }
+
+      // 「占い中...」の表示をする要素を表示
+      loadingElement.style.display = 'block';
+
+      // 500ミリ秒ごとに一文字ずつ表示する関数を呼び出す
+      timer = setInterval(displayNextCharacter, 500);
+
+      // 3秒後にresult.htmlに自動的に移行する
+      setTimeout(function() {
+        clearInterval(timer);
+        window.location.href = 'result.html';
+      }, 3000);
+    }
+
+    // 「占い中...」の表示をリセットする関数
+    function resetLoadingText() {
+      const loadingElement = document.getElementById('loading');
+      loadingElement.textContent = '';
+    }
+
+    // ページが復元された場合の処理
+    window.addEventListener('pageshow', function(event) {
+      var historyTraversal = event.persisted ||
+                             (typeof window.performance != 'undefined' &&
+                              window.performance.navigation.type === 2);
+      if (historyTraversal) {
+        // ページが復元された場合に「占い中...」の表示をリセットする
+        resetLoadingText();
+      }
+    });
+  </script>
+  
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
 </head>
 <body>
-  <label for="year">年：</label>
-  <select id="year" name="year">
-    <option value="">----</option>
+  <h1 style="font-family: 'Sawarabi Mincho';">心理学占い</h1>
+  
+  <div class="center-image">
+    <!-- イラストの追加 -->
+    <img class="illustration" src="uranaiimage.png" alt="占いイラスト">
+  </div>
+  
+  <h3>あなたの生年月日・血液型を教えてください</h3>
+  <label for="year">年:</label>
+  <select id="year">
+    <option value="">選択してください</option>
+    <!-- 1950年から2023年までの全ての年を追加 -->
     <script>
-      var currentYear = new Date().getFullYear();
-      for (var year = currentYear; year >= 1950; year--) {
-        document.write('<option value="' + year + '">' + year + '</option>');
+      for (let year = 2023; year >= 1950; year--) {
+        document.write('<option value="' + year + '">' + year + '年</option>');
       }
     </script>
   </select>
-  <label for="month">月：</label>
-  <select id="month" name="month">
-    <option value="">--</option>
+  <br>
+  <br>
+  <label for="month">月:</label>
+  <select id="month">
+    <option value="">選択してください</option>
+    <!-- 1月から12月までの全ての月を追加 -->
     <script>
-      for (var month = 1; month <= 12; month++) {
-        document.write('<option value="' + month + '">' + month + '</option>');
+      for (let month = 1; month <= 12; month++) {
+        document.write('<option value="' + month + '">' + month + '月</option>');
       }
     </script>
   </select>
-  <label for="day">日：</label>
-  <select id="day" name="day">
-    <option value="">--</option>
+  <br>
+  <br>
+  <label for="day">日:</label>
+  <select id="day">
+    <option value="">選択してください</option>
+    <!-- 1日から31日までの全ての日を追加 -->
     <script>
-      for (var day = 1; day <= 31; day++) {
-        document.write('<option value="' + day + '">' + day + '</option>');
+      for (let day = 1; day <= 31; day++) {
+        document.write('<option value="' + day + '">' + day + '日</option>');
       }
     </script>
   </select>
-  <label for="blood-type">血液型：</label>
+  <br>
+  <br>
+  <label for="blood-type">血液型:</label>
   <select id="blood-type" name="blood-type">
-    <option value="">----</option>
     <option value="A">A型</option>
     <option value="B">B型</option>
     <option value="O">O型</option>
     <option value="AB">AB型</option>
   </select>
   <br>
-  <button onclick="startFortuneTelling()">自分を占う！</button>
+  <br>
+  <button onclick="startFortuneTelling()">クリックして占う</button>
+  <br> 
+  <!-- 「占い中...」の表示をする要素 -->
   <div id="loading" style="display: none;"></div>
-  <script src="main.js"></script>
-  <p id="additional-text">Additional text.</p>
+  <p id="additional-text">*このウェブサイトが個人情報を収集をすることはございません。</p>
+  
 </body>
 </html>
