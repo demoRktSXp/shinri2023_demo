@@ -7,7 +7,9 @@
   <!-- フォントのリンクタグを追加 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+  
   <style>
     /* フォント指定 */
     body {
@@ -138,7 +140,7 @@
   <meta http-equiv="Pragma" content="no-cache" />
 </head>
 <body>
-
+  <h1><span class="wf-sawarabimincho">心理学占い</span></h1>
   
   <div class="center-image">
     <!-- イラストの追加 -->
@@ -183,7 +185,8 @@
   <br>
   <br>
   <label for="blood-type">血液型:</label>
-  <select id="blood-type" name="blood-type">
+  <select id="blood-type">
+    <option value="">選択してください</option>
     <option value="A">A型</option>
     <option value="B">B型</option>
     <option value="O">O型</option>
@@ -191,11 +194,12 @@
   </select>
   <br>
   <br>
-  <button onclick="startFortuneTelling()">クリックして占う</button>
-  <br> 
-  <!-- 「占い中...」の表示をする要素 -->
-  <div id="loading" style="display: none;"></div>
-  <p id="additional-text">*このウェブサイトが個人情報を収集をすることはございません。</p>
+  <button onclick="startFortuneTelling()">自分を占う！</button>
   
+  <!-- 「占い中...」の表示 -->
+  <p id="loading"></p>
+
+  <!-- 追加のテキスト -->
+  <p id="additional-text">*このウェブサイトは個人情報を収集しません。</p>
 </body>
 </html>
