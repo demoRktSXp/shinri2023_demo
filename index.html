@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>心理学占い</title>
-  <link rel="stylesheet" type="text/css" href="http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css">
-　　　　　<style>
-  .illustration {
-    width: 500px;
-    height: auto;
- 　 }
-　　　　　</style>
   <style>
-    /* 追加のスタイル */
-    p.Regular {
-      font-family: 'M+ Type-1 (general-j) Regular';
+    /* イラストのスタイル */
+    .illustration {
+      width: 200px;
+    }
+  </style>
+  <style>
+    /* 追加されたフォントのスタイル */
+    @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
+    .wf-roundedmplus1c {
+      font-family: "M PLUS Rounded 1c";
     }
   </style>
   <script>
@@ -22,7 +22,7 @@
       // 「占い中...」の表示をリセットする
       resetLoadingText();
     });
-    
+
     // 「自分を占う！」リンクがクリックされたときの処理
     function startFortuneTelling() {
       // 生年月日の値を取得
@@ -83,8 +83,8 @@
     // ページが復元された場合の処理
     window.addEventListener('pageshow', function(event) {
       var historyTraversal = event.persisted ||
-                             (typeof window.performance != 'undefined' &&
-                              window.performance.navigation.type === 2);
+        (typeof window.performance != 'undefined' &&
+          window.performance.navigation.type === 2);
       if (historyTraversal) {
         // ページが復元された場合に「占い中...」の表示をリセットする
         resetLoadingText();
@@ -114,65 +114,11 @@
       padding: 10px 20px;
       margin-top: 20px;
     }
-  </style>
-</head>
-<body>
-  <h1>心理学占い</h1>
-  <img class="illustration" src="uranaiimage.png" alt="占いイラスト">
-  
-  <h3>あなたの生年月日・血液型を教えてください</h3>
-  <label for="year">年:</label>
-  <select id="year">
-    <option value="">選択してください</option>
-    <!-- 1950年から2023年までの全ての年を追加 -->
-    <script>
-      for (let year = 2023; year >= 1950; year--) {
-        document.write('<option value="' + year + '">' + year + '年</option>');
-      }
-    </script>
-  </select>
-  <br><br>
-  <label for="month">月:</label>
-  <select id="month">
-    <option value="">選択してください</option>
-    <!-- 1月から12月までの全ての月を追加 -->
-    <script>
-      for (let month = 1; month <= 12; month++) {
-        document.write('<option value="' + month + '">' + month + '月</option>');
-      }
-    </script>
-  </select>
-  <br><br>
-  <label for="day">日:</label>
-  <select id="day">
-    <option value="">選択してください</option>
-    <!-- 1日から31日までの全ての日を追加 -->
-    <script>
-      for (let day = 1; day <= 31; day++) {
-        document.write('<option value="' + day + '">' + day + '日</option>');
-      }
-    </script>
-  </select>
-  <br><br>
-  <label for="blood-type">血液型:</label>
-  <select id="blood-type" name="blood-type">
-    <option value="A">A型</option>
-    <option value="B">B型</option>
-    <option value="O">O型</option>
-    <option value="AB">AB型</option>
-  </select>
-  <br><br>
-  <button onclick="startFortuneTelling()">クリックして占う</button>
-  <br>
-  <div id="loading" style="display: none;"></div>
-  <p id="additional-text">*このウェブサイトが個人情報を収集することはございません。</p>
-  <style>
-    /* 既存のスタイル */
-    body {
-      text-align: center;
-      font-size: 40px;
-      max-width: 1000px;
-      margin: 0 auto;
+
+    /* イラストのスタイル */
+    .illustration {
+      width: 500px;
+      height: auto;
     }
 
     /* 追加のスタイル */
@@ -187,5 +133,63 @@
   </style>
   <meta http-equiv="Cache-Control" content="no-store" />
   <meta http-equiv="Pragma" content="no-cache" />
+</head>
+<body>
+  <h1>心理学占い</h1>
+  <!-- イラストの追加 -->
+  <img class="illustration" src="uranaiimage.png" alt="占いイラスト">
+
+  <h3>あなたの生年月日・血液型を教えてください</h3>
+  <label for="year">年:</label>
+  <select id="year">
+    <option value="">選択してください</option>
+    <!-- 1950年から2023年までの全ての年を追加 -->
+    <script>
+      for (let year = 2023; year >= 1950; year--) {
+        document.write('<option value="' + year + '">' + year + '年</option>');
+      }
+    </script>
+  </select>
+  <br>
+  <br>
+  <label for="month">月:</label>
+  <select id="month">
+    <option value="">選択してください</option>
+    <!-- 1月から12月までの全ての月を追加 -->
+    <script>
+      for (let month = 1; month <= 12; month++) {
+        document.write('<option value="' + month + '">' + month + '月</option>');
+      }
+    </script>
+  </select>
+  <br>
+  <br>
+  <label for="day">日:</label>
+  <select id="day">
+    <option value="">選択してください</option>
+    <!-- 1日から31日までの全ての日を追加 -->
+    <script>
+      for (let day = 1; day <= 31; day++) {
+        document.write('<option value="' + day + '">' + day + '日</option>');
+      }
+    </script>
+  </select>
+
+  <br>
+  <br>
+  <label for="blood-type">血液型:</label>
+  <select id="blood-type" name="blood-type">
+    <option value="A">A型</option>
+    <option value="B">B型</option>
+    <option value="O">O型</option>
+    <option value="AB">AB型</option>
+  </select>
+  <br>
+  <br>
+  <button onclick="startFortuneTelling()">クリックして占う</button>
+  <br> 
+  <!-- 「占い中...」の表示をする要素 -->
+  <div id="loading" style="display: none;"></div>
+  <p id="additional-text">*このウェブサイトが個人情報を収集することはございません。</p>
 </body>
 </html>
