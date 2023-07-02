@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
   <title>心理学占い</title>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
   <style>
     /* イラストのスタイル */
     .illustration {
@@ -10,10 +13,39 @@
     }
   </style>
   <style>
-    /* 追加されたフォントのスタイル */
-    @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
-    .wf-roundedmplus1c {
-      font-family: "M PLUS Rounded 1c";
+    /* 既存のスタイル */
+    body {
+      text-align: center;
+      font-size: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      font-family: 'M PLUS 1p', sans-serif;
+    }
+
+    /* 追加のスタイル */
+    #additional-text {
+      position: absolute;
+      left: 50%;
+      top: 65em;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: #333;
+    }
+
+    select#year,
+    select#month,
+    select#day,
+    select#blood-type {
+      height: 50px;
+      font-size: 30px;
+      font-family: 'M PLUS Rounded 1c', sans-serif;
+    }
+
+    button {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-family: 'M PLUS 1p', sans-serif;
     }
   </style>
   <script>
@@ -83,56 +115,14 @@
     // ページが復元された場合の処理
     window.addEventListener('pageshow', function(event) {
       var historyTraversal = event.persisted ||
-        (typeof window.performance != 'undefined' &&
-          window.performance.navigation.type === 2);
+                             (typeof window.performance != 'undefined' &&
+                              window.performance.navigation.type === 2);
       if (historyTraversal) {
         // ページが復元された場合に「占い中...」の表示をリセットする
         resetLoadingText();
       }
     });
   </script>
-  <style>
-    body {
-      text-align: center; /* body要素のテキストを中央揃えにする */
-    }
-
-    .center-image {
-      display: flex;
-      justify-content: center;
-    }
-
-    select#year,
-    select#month,
-    select#day,
-    select#blood-type {
-      height: 50px; /* 選択箇所の高さを調整する */
-      font-size: 30px; /* 選択箇所のフォントサイズを調整する */
-    }
-
-    button {
-      font-size: 24px;
-      padding: 10px 20px;
-      margin-top: 20px;
-    }
-
-    /* イラストのスタイル */
-    .illustration {
-      width: 500px;
-      height: auto;
-    }
-
-    /* 追加のスタイル */
-    #additional-text {
-      position: absolute;
-      left: 50%;
-      top: 65em;
-      transform: translateX(-50%);
-      font-size: 24px;
-      color: #333;
-    }
-  </style>
-  <meta http-equiv="Cache-Control" content="no-store" />
-  <meta http-equiv="Pragma" content="no-cache" />
 </head>
 <body>
   <h1>心理学占い</h1>
@@ -150,8 +140,7 @@
       }
     </script>
   </select>
-  <br>
-  <br>
+  <br><br>
   <label for="month">月:</label>
   <select id="month">
     <option value="">選択してください</option>
@@ -162,8 +151,7 @@
       }
     </script>
   </select>
-  <br>
-  <br>
+  <br><br>
   <label for="day">日:</label>
   <select id="day">
     <option value="">選択してください</option>
@@ -174,9 +162,7 @@
       }
     </script>
   </select>
-
-  <br>
-  <br>
+  <br><br>
   <label for="blood-type">血液型:</label>
   <select id="blood-type" name="blood-type">
     <option value="A">A型</option>
@@ -184,12 +170,54 @@
     <option value="O">O型</option>
     <option value="AB">AB型</option>
   </select>
-  <br>
-  <br>
+  <br><br>
   <button onclick="startFortuneTelling()">クリックして占う</button>
-  <br> 
+  <br>
+
   <!-- 「占い中...」の表示をする要素 -->
   <div id="loading" style="display: none;"></div>
-  <p id="additional-text">*このウェブサイトが個人情報を収集することはございません。</p>
+
+  <p id="additional-text">*このウェブサイトが個人情報を収集をすることはございません。</p>
+
+  <style>
+    /* 既存のスタイル */
+    body {
+      text-align: center;
+      font-size: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* 追加のスタイル */
+    .illustration {
+      width: 500px;
+      height: auto;
+    }
+
+    select#year,
+    select#month,
+    select#day,
+    select#blood-type {
+      height: 50px;
+      font-size: 30px;
+    }
+
+    button {
+      font-size: 24px;
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+
+    #additional-text {
+      position: absolute;
+      left: 50%;
+      top: 65em;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
 </body>
 </html>
