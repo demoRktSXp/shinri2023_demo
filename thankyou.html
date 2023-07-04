@@ -8,9 +8,14 @@
     body {
       font-size: 40px;
     }
+
     .center {
       display: flex;
       justify-content: center;
+    }
+
+    .center p {
+      text-align: center;
     }
   </style>
 </head>
@@ -19,14 +24,14 @@
   <div id="rating-container">
     <p>
       当てはまっている度は <span id="rating-value" style="font-size: 40px;"></span> ですね。評価ありがとうございました！
-      </p>
+    </p>
   </div>
 
-   <div class="center">
+  <div class="center">
     <h2>バーナム効果について</h2>
-   </div>
+  </div>
   <div id="explanation-container">
-  <p>
+    <p>
       この「心理学占い」は、バーナム効果を体験してもらうために作成されました。<br><br>
       バーナム効果とは、多くの人に当てはまることを言われているにもかかわらず、それが自分に当てはまると感じてしまう心理的な効果です。<br><br>
       たとえば、占い師に「あなたは今悩んでいることがありますね」と言われると、多くの人は「この占い師は私の気持ちをわかってくれた！」と感じます。しかし、占い師を訪れるということは、ほとんどの場合、何らかの悩みがあるものであり、悩みのない人は少数派です。
@@ -41,18 +46,12 @@
     <img class="illustration" src="s0130_31_0.png" alt="ありがとうイラスト">
   </div>
 
-  <P>
-    *重ねてになりますが、このウェブサイトでは生年月日や評価を収集することはありません。
-  </P>
-  <style>
-    /* 既存のスタイル */
-    body {
-      text-align: center;
-      font-size: 40px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
- </style>
+  <div class="center">
+    <p>
+      *重ねてになりますが、このウェブサイトでは生年月日や評価を収集することはありません。
+    </p>
+  </div>
+
   <script>
     const ratingValueElement = document.getElementById("rating-value");
     const urlParams = new URLSearchParams(window.location.search);
